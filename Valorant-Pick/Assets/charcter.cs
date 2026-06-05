@@ -8,8 +8,11 @@ public class charcter : MonoBehaviour
     public int i = -1;
     [Range(-1, 9)] public int testIndex = -1; 
     public Image targetUiImage;
+    public Image targetUiImage2;
+    public Image role;
     public Sprite[] characterSprites = new Sprite[10];
     public Sprite[] Illustration = new Sprite[10];
+    public Sprite[] sprites = new Sprite[4];
 
     void Start()
     {
@@ -18,7 +21,7 @@ public class charcter : MonoBehaviour
 
     private void Update()
     {
-        switch (testIndex)
+        switch (i)
         {
             case 0:  Text.text = "제트"; break;
             case 1:  Text.text = "피닉스"; break;
@@ -30,21 +33,40 @@ public class charcter : MonoBehaviour
             case 7:  Text.text = "브림스톤"; break;
             case 8:  Text.text = "세이지"; break;
             case 9:  Text.text = "사이퍼"; break;
-            default:    Text.text = "선택 중..."; break;
+            default: Text.text = "선택 중..."; break;
         }
-        
-            Debug.Log($"현재 testIndex의 값: {testIndex} ({Text.text} 선택됨)");
+
+        if (i == 0 || i == 1 || i == 2)
+        {
+            role.sprite = sprites[0];
+        }
+        if (i == 3 || i == 4)
+        {
+            role.sprite = sprites[1];
+        }
+        if (i == 5 || i == 6 || i == 7)
+        {
+            role.sprite = sprites[2];
+        }
+        if (i == 8 || i == 9)
+        {
+            role.sprite = sprites[3];
+        }   
+        Debug.Log($"현재 testIndex의 값: {testIndex} ({Text.text} 선택됨)");
         if (targetUiImage == null) return;
 
         if (testIndex > -1)
         {
-            targetUiImage.gameObject.SetActive(true);
+            targetUiImage.color = Color.white;
+            targetUiImage2.color = Color.white;
+            role.color = Color.white;
             RefreshImage(testIndex);
         }
         else
         {
-            Debug.Log("문제");
-            targetUiImage.gameObject.SetActive(false);
+            targetUiImage2.color = Color.clear;
+            targetUiImage.color = Color.clear;
+            role.color = Color.clear;
         }
     }
 
@@ -56,6 +78,7 @@ public class charcter : MonoBehaviour
         if (characterSprites[index] && Illustration[index] != null)
         {
             targetUiImage.sprite = characterSprites[index];
+            targetUiImage2.sprite = Illustration[index];
             Debug.Log("실행");
             //targetUiImage.sprite = Illustration[index];
         }
