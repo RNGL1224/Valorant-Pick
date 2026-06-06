@@ -735,7 +735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &247769583
 RectTransform:
   m_ObjectHideFlags: 0
@@ -969,6 +969,7 @@ GameObject:
   - component: {fileID: 271738110}
   - component: {fileID: 271738109}
   - component: {fileID: 271738108}
+  - component: {fileID: 271738112}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1063,7 +1064,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 271738110}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1031922192}
+        m_TargetAssemblyTypeName: charcter, Assembly-CSharp
+        m_MethodName: pick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &271738110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1102,6 +1115,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271738106}
   m_CullTransparentMesh: 1
+--- !u!114 &271738112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271738106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &281787254
 GameObject:
   m_ObjectHideFlags: 0
@@ -3831,7 +3861,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!114 &1016053779
 MonoBehaviour:
@@ -4010,15 +4040,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732296ba54f398b47be8ed9c93f12955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::charcter
+  i: 0
   Text: {fileID: 806008047}
   Text2: {fileID: 1868965117}
   Second: 60
   time: 0
   testIndex: -1
+  Grid: {fileID: 170748339}
   targetUiImage: {fileID: 1031922194}
   targetUiImage2: {fileID: 167267589}
   role: {fileID: 281787257}
   Pick: {fileID: 170748339}
+  Pick2: {fileID: 271738106}
   Panel: {fileID: 247769582}
   characterSprites:
   - {fileID: -7603785817275960907, guid: 1cb6b0fb3a1fcff4cad60dc537eb1aa1, type: 3}
@@ -6555,6 +6588,7 @@ GameObject:
   - component: {fileID: 2065575775}
   - component: {fileID: 2065575778}
   - component: {fileID: 2065575777}
+  - component: {fileID: 2065575779}
   m_Layer: 5
   m_Name: Image (6)
   m_TagString: Untagged
@@ -6620,6 +6654,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065575774}
   m_CullTransparentMesh: 1
+--- !u!223 &2065575779
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065575774}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 5
+  m_TargetDisplay: 0
 --- !u!1 &2141444441
 GameObject:
   m_ObjectHideFlags: 0
