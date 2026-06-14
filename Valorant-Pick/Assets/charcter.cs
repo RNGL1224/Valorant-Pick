@@ -21,15 +21,19 @@ public class charcter : MonoBehaviour
     public GameObject Pick;
     public GameObject Pick2;
     public GameObject Panel;
+    public GameObject Panel2;
     public Sprite[] characterSprites = new Sprite[10];
     public Sprite[] Illustration = new Sprite[10];
     public Sprite[] sprites = new Sprite[4];
 
     private CanvasGroup gridCanvasGroup;
+    private CanvasGroup pickCanvasGroup; 
     private bool isPicked = false;
 
     void Start()
     {
+        Panel2.SetActive(true);
+        Pick2.SetActive(false);
         input = 0;
         Pick.SetActive(true);
         i = 1;
@@ -38,14 +42,18 @@ public class charcter : MonoBehaviour
         if (Grid != null)
         {
             gridCanvasGroup = Grid.GetComponent<CanvasGroup>();
-            if (gridCanvasGroup == null)
-            {
-                gridCanvasGroup = Grid.AddComponent<CanvasGroup>();
-            }
+            if (gridCanvasGroup == null) gridCanvasGroup = Grid.AddComponent<CanvasGroup>();
+        }
+
+        if (Pick != null)
+        {
+            pickCanvasGroup = Pick.GetComponent<CanvasGroup>();
+            if (pickCanvasGroup == null) pickCanvasGroup = Pick.AddComponent<CanvasGroup>();
         }
 
         SetGridInteractable(true);
         UpdateUIState();
+        Time.timeScale = 0;
     }
 
     private void Update()
@@ -158,7 +166,6 @@ public class charcter : MonoBehaviour
         if (testIndex > -1 && i == 1 && !isPicked)
         {
             isPicked = true;
-
             SetGridInteractable(false);
 
             Image targetImage = Pick2.GetComponent<Image>();
@@ -195,6 +202,12 @@ public class charcter : MonoBehaviour
                 c.a = alpha;
                 targetText.color = c;
             }
+
+            if (pickCanvasGroup != null)
+            {
+                pickCanvasGroup.alpha = alpha;
+            }
+
             yield return null;
         }
 
@@ -242,6 +255,11 @@ public class charcter : MonoBehaviour
         if (targetImage != null) targetImage.color = new Color32(133, 245, 229, 190);
         if (targetText != null) targetText.color = new Color32(255, 255, 255, 255);
 
+        if (pickCanvasGroup != null)
+        {
+            pickCanvasGroup.alpha = 1f;
+        }
+
         Pick2.GetComponent<RectTransform>().anchoredPosition = new Vector2(513.07f, -427.6f);
         
         SetGridInteractable(true);
@@ -275,5 +293,11 @@ public class charcter : MonoBehaviour
     {
         Debug.Log("게임을 종료합니다.");
         Application.Quit();
+    }
+    public void Guid_Quit()
+    {
+        Time.timeScale = 1;
+        Pick2.SetActive(true);
+        Panel2.SetActive(false);
     }
 }
